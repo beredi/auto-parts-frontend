@@ -1,12 +1,17 @@
 <template>
   <div class="container">
     <h2>Car Information</h2>
-    <p><strong>Name:</strong> {{ car.name }}</p>
-    <p><strong>Registration Number:</strong> {{ car.registration_number }}</p>
-    <p><strong>Is Registered:</strong> {{ car.is_registered }}</p>
     <router-link to="/" class="btn btn-info text-white"
       ><i class="fas fa-chevron-left"></i> Back to Cars</router-link
     >
+    <template v-if="car">
+      <p><strong>Name:</strong> {{ car.name }}</p>
+      <p><strong>Registration Number:</strong> {{ car.registration_number }}</p>
+      <p><strong>Is Registered:</strong> {{ car.is_registered }}</p>
+    </template>
+    <template v-else>
+      <p>Loading car information...</p>
+    </template>
   </div>
 </template>
 
@@ -19,12 +24,14 @@ export default {
   },
   created() {
     const carId = this.$route.params.id;
-    this.car = {
-      id: carId,
-      name: "Car 1",
-      registration_number: "ABC123",
-      is_registered: true,
-    };
+    fetch(`http://127.0.0.1:8000/api/cars/${carId}`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.car = data.data;
+      })
+      .catch((error) => {
+        console.error("Error fetching car:", error);
+      });
   },
 };
 </script>
