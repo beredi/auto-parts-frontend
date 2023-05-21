@@ -1,8 +1,5 @@
 <template>
-  <div class="container">
-    <h1>My Vue.js App with Bootstrap</h1>
-    <div class="alert alert-primary" role="alert">
-      This is a Bootstrap alert!
-    </div>
+  <div id="app">
+    <router-view></router-view>
   </div>
 </template>
