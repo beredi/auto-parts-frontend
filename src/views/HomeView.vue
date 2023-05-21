@@ -45,7 +45,16 @@
             </label>
           </div>
           <div class="btn-group py-2">
-            <button type="submit" class="btn btn-outline-success">Add</button>
+            <button type="submit" class="btn btn-outline-success">
+              <i class="fas fa-plus"></i> Add
+            </button>
+            <button
+              type="button"
+              @click="resetAddCarForm"
+              class="btn btn-outline-secondary"
+            >
+              <i class="fas fa-times"></i> Cancel
+            </button>
           </div>
         </form>
       </div>
@@ -88,7 +97,14 @@
           </div>
           <div class="btn-group py-2">
             <button type="submit" class="btn btn-outline-warning">
-              Update
+              <i class="fas fa-check"></i> Update
+            </button>
+            <button
+              type="button"
+              @click="resetEditCarForm"
+              class="btn btn-outline-secondary"
+            >
+              <i class="fas fa-times"></i> Cancel
             </button>
           </div>
         </form>
