@@ -13,7 +13,11 @@
       <tbody>
         <tr v-for="car in cars" :key="car.id">
           <td>
-            <button class="btn btn-outline-primary rounded-circle">SHOW</button>
+            <router-link
+              :to="`/car/${car.id}`"
+              class="btn btn-outline-primary rounded-circle"
+              >Show</router-link
+            >
           </td>
           <td>{{ car.name }}</td>
           <td>{{ car.registration_number }}</td>
